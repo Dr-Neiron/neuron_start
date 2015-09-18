@@ -6,14 +6,20 @@
 class Akson
 {
 public:
-    explicit Akson(std::shared_ptr<INeuron> parent);
-    void setNewSynapse(std::shared_ptr<INeuron> newNeuron, double weight);
-    void process();
+    explicit Akson(INeuron* parent);
     virtual ~Akson();
+
+    void setNewSynapse(std::shared_ptr<INeuron> newNeuron, double weight);
+    void processImpulse();
+
 private:
-    Akson();
-    double _currentEnergy;
-    std::shared_ptr<INeuron> _parent;
+    Akson() = delete;
+    Akson(const Akson& other) = delete;
+    Akson(Akson&& other) = delete;
+    Akson& operator=(const Akson& other) = delete;
+    Akson& operator=(Akson&& other) = delete;
+    
+    INeuron* _parent;
     std::vector<std::pair<std::shared_ptr<INeuron>, double>> _aksonSynapces;
 
 };

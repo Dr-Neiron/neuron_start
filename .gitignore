@@ -26,3 +26,13 @@
 *.exe
 *.out
 *.app
+*.ilk
+*.pdb
+*.tlog
+*.ipch
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.log
+*.idb

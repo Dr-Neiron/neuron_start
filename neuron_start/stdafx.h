@@ -9,6 +9,11 @@
 
 #include <stdio.h>
 #include <tchar.h>
+#include <vector>
+#include <memory>
+#include <random>
+#include "INeuron.h"
+#include "Neuron.h"
 
 
 
