@@ -1,21 +1,14 @@
-#include "stdafx.h"
 #include "Neuron.h"
-#include <random>
 
-Neuron::Neuron():
-_akson(new Akson(this)),
-_currentEnergy(0)
+Neuron::Neuron(const Config &configurator):
+_configurator(configurator),
+_currentEnergy(0),
+_weightSum(0)
 {
 }
 
-
-void Neuron::process()
+Neuron::~Neuron()
 {
-    if (_currentEnergy >= BORDER_VALUE)
-    {
-        _akson->processImpulse();
-        _currentEnergy = 0;
-    }
 }
 
 void Neuron::addEnergy(double addition)
@@ -23,19 +16,32 @@ void Neuron::addEnergy(double addition)
     _currentEnergy += addition;
 }
 
+void Neuron::process()
+{
+    if (!isActive()) return;
+
+    for (std::vector<Synapse>::iterator synapse = _synapses.begin(); synapse != _synapses.end(); ++synapse)
+    {
+        bool needIncreaseWeight = synapse->neuron->isActive();
+        synapse->neuron->addEnergy(synapse->weight / _weightSum * _currentEnergy);
+        if (needIncreaseWeight)
+            synapse->weight += synapse->weight * _configurator.getIncreaseWeightAmount();
+        else
+            synapse->weight -= synapse->weight * _configurator.getDecreaseWeightAmount();
+    }
+
+    _currentEnergy = 0;
+}
+
 bool Neuron::isActive() const
 {
-    return _currentEnergy >= BORDER_VALUE;
+    return _currentEnergy >= _configurator.getThreshold();
 }
 
-void Neuron::setNewSynapse(std::shared_ptr<INeuron> otherNeuron)
+void Neuron::setNewSynapse(const Synapse& newSynapse)
 {
-    static std::default_random_engine generator;
-    static std::uniform_real_distribution<double> distribution(0.0, 1.0);
-    double randomWeight = distribution(generator);
-    _akson->setNewSynapse(otherNeuron, randomWeight);
+    _synapses.push_back(newSynapse);
+    _weightSum += newSynapse.weight;
 }
 
-Neuron::~Neuron()
-{
-}
+

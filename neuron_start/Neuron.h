@@ -1,19 +1,19 @@
 #pragma once
 #include "INeuron.h"
-#include "Akson.h"
-#include <memory>
+#include "Config.h"
+#include <vector>
 
 class Neuron :
     public INeuron
 {
 public:
-    Neuron();
+    Neuron(const Config& config);
     virtual ~Neuron();
 
     virtual void process() override;
     virtual void addEnergy(double addition) override;
     virtual bool isActive() const override;
-    virtual void setNewSynapse(std::shared_ptr<INeuron> otherNeuron) override;
+    virtual void setNewSynapse(const Synapse& newSynapse) override;
 
 private:
     Neuron(const Neuron& other) = delete;
@@ -21,7 +21,9 @@ private:
     Neuron& operator=(const Neuron& other) = delete;
     Neuron& operator=(Neuron&& other) = delete;
 
-    std::unique_ptr<Akson> _akson;
+    const Config& _configurator;
     double _currentEnergy;
+    double _weightSum;
+    std::vector<Synapse> _synapses;
 };
 
