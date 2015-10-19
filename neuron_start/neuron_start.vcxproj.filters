@@ -33,6 +33,12 @@
     <ClInclude Include="NeuronPool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SensorNeuron.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OutNeuron.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="neuron_start.cpp">
@@ -45,6 +51,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NeuronPool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SensorNeuron.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OutNeuron.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

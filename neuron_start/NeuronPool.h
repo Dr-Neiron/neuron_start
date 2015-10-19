@@ -14,6 +14,7 @@ public:
 private:
     size_t _size;
     std::vector<INeuron*> _neurons;
+    std::vector<INeuron*> _sensorNeurons;
+    std::vector<INeuron*> _outNeurons;
     const Config& _configurator;
 };
-

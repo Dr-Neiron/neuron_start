@@ -7,7 +7,7 @@ class Neuron :
     public INeuron
 {
 public:
-    Neuron(const Config& config);
+    explicit Neuron(const Config& config);
     virtual ~Neuron();
 
     virtual void process() override;
@@ -15,15 +15,8 @@ public:
     virtual bool isActive() const override;
     virtual void setNewSynapse(const Synapse& newSynapse) override;
 
-private:
-    Neuron(const Neuron& other) = delete;
-    Neuron(Neuron&& other) = delete;
-    Neuron& operator=(const Neuron& other) = delete;
-    Neuron& operator=(Neuron&& other) = delete;
-
-    const Config& _configurator;
+protected:
     double _currentEnergy;
     double _weightSum;
     std::vector<Synapse> _synapses;
 };
-

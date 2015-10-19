@@ -1,7 +1,7 @@
 #include "Neuron.h"
 
 Neuron::Neuron(const Config &configurator):
-_configurator(configurator),
+INeuron(configurator),
 _currentEnergy(0),
 _weightSum(0)
 {
@@ -20,14 +20,14 @@ void Neuron::process()
 {
     if (!isActive()) return;
 
-    for (std::vector<Synapse>::iterator synapse = _synapses.begin(); synapse != _synapses.end(); ++synapse)
+    for (auto synapse = _synapses.begin(); synapse != _synapses.end(); ++synapse)
     {
         bool needIncreaseWeight = synapse->neuron->isActive();
         synapse->neuron->addEnergy(synapse->weight / _weightSum * _currentEnergy);
         if (needIncreaseWeight)
-            synapse->weight += synapse->weight * _configurator.getIncreaseWeightAmount();
+            synapse->weight += synapse->weight * _config.getIncreaseWeightAmount();
         else
-            synapse->weight -= synapse->weight * _configurator.getDecreaseWeightAmount();
+            synapse->weight -= synapse->weight * _config.getDecreaseWeightAmount();
     }
 
     _currentEnergy = 0;
@@ -35,7 +35,7 @@ void Neuron::process()
 
 bool Neuron::isActive() const
 {
-    return _currentEnergy >= _configurator.getThreshold();
+    return _currentEnergy >= _config.getThreshold();
 }
 
 void Neuron::setNewSynapse(const Synapse& newSynapse)
