@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h" />
+    <ClInclude Include="Environment.h" />
     <ClInclude Include="INeuron.h" />
     <ClInclude Include="Neuron.h" />
     <ClInclude Include="NeuronPool.h" />
@@ -92,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Config.cpp" />
+    <ClCompile Include="Environment.cpp" />
     <ClCompile Include="Neuron.cpp" />
     <ClCompile Include="NeuronPool.cpp" />
     <ClCompile Include="neuron_start.cpp" />
