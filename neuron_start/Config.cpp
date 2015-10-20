@@ -52,3 +52,8 @@ size_t Config::getOutNeuronCount() const
 {
     return _outNeuronCount;
 }
+
+const Logger& Config::log() const
+{
+    return _logger;
+}

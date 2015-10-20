@@ -85,6 +85,7 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="Environment.h" />
     <ClInclude Include="INeuron.h" />
+    <ClInclude Include="Logger.h" />
     <ClInclude Include="Neuron.h" />
     <ClInclude Include="NeuronPool.h" />
     <ClInclude Include="OutNeuron.h" />
@@ -94,6 +95,7 @@
   <ItemGroup>
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="Environment.cpp" />
+    <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Neuron.cpp" />
     <ClCompile Include="NeuronPool.cpp" />
     <ClCompile Include="neuron_start.cpp" />

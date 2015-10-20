@@ -1,4 +1,6 @@
 #pragma once
+#include "Logger.h"
+
 class Config
 {
 public:
@@ -11,6 +13,7 @@ public:
     size_t getMiddleNeuronCount() const;
     size_t getSensorNeuronCount() const;
     size_t getOutNeuronCount() const;
+    const Logger& log() const;
 
 private:
     double _threshold;
@@ -21,4 +24,5 @@ private:
     size_t _middleNeuronCount;
     size_t _sensorNeuronCount;
     size_t _outNeuronCount;
+    Logger _logger;
 };
