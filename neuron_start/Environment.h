@@ -8,7 +8,7 @@ class Environment
 public:
     Environment(const Config& config);
     void setPool(std::shared_ptr<NeuronPool> neuronPool);
-    void startLearning();
+    bool learn();
     void test();
     virtual ~Environment();
 

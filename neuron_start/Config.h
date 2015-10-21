@@ -13,6 +13,8 @@ public:
     size_t getMiddleNeuronCount() const;
     size_t getSensorNeuronCount() const;
     size_t getOutNeuronCount() const;
+    size_t getLearnLimit() const;
+    void printConfig() const;
     const Logger& log() const;
 
 private:
@@ -24,5 +26,6 @@ private:
     size_t _middleNeuronCount;
     size_t _sensorNeuronCount;
     size_t _outNeuronCount;
+    size_t _learnLimit;
     Logger _logger;
 };

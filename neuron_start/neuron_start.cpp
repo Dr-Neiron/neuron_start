@@ -10,6 +10,7 @@
 int main(int argc, char* argv[])
 {
     Config config;
+    config.printConfig();
 
     auto neuronPool = std::make_shared<NeuronPool>(config);
     neuronPool->construct();
@@ -17,7 +18,16 @@ int main(int argc, char* argv[])
     Environment env(config);
     env.setPool(neuronPool);
 
-    env.startLearning();
-    env.test();
+    if (env.learn())
+    {
+        env.test();
+    }
+    else
+    {
+        config.log() << __FUNCTIONW__ << ": learning failed. \n";
+        return -1;
+    }
+
+    return 0;
 }
 

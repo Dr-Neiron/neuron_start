@@ -13,6 +13,7 @@ public:
     void lockSynapseWeights(bool isLocked);
     std::vector<INeuron*> getSensorNeurons() const;
     std::vector<INeuron*> getOutNeurons() const;
+    void dumpNetwork(std::wstring fileName) const;
 
 private:
     size_t _size;

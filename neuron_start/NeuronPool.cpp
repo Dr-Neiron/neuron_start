@@ -3,6 +3,7 @@
 #include "SensorNeuron.h"
 #include "OutNeuron.h"
 #include <random>
+#include <stdexcept>
 
 NeuronPool::NeuronPool(const Config& configurator) :
     _size(0),
@@ -110,3 +111,7 @@ std::vector<INeuron*> NeuronPool::getOutNeurons() const
     return _outNeurons;
 }
 
+void NeuronPool::dumpNetwork(std::wstring fileName) const
+{
+    throw std::runtime_error("Not implemented");
+}

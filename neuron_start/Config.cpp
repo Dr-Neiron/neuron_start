@@ -5,11 +5,12 @@ Config::Config():
     _threshold(0.5),
     _increaseWeightAmount(0.1),
     _decreaseWeightAmount(0.05),
-    _middleSynapseCount(10),
-    _outSynapseCount(4),
-    _middleNeuronCount(5),
-    _sensorNeuronCount(2),
-    _outNeuronCount(2)
+    _middleSynapseCount(5000),
+    _outSynapseCount(100),
+    _middleNeuronCount(1000),
+    _sensorNeuronCount(4),
+    _outNeuronCount(4),
+    _learnLimit(100000)
 {
 }
 
@@ -51,6 +52,24 @@ size_t Config::getSensorNeuronCount() const
 size_t Config::getOutNeuronCount() const
 {
     return _outNeuronCount;
+}
+
+size_t Config::getLearnLimit() const
+{
+    return _learnLimit;
+}
+
+void Config::printConfig() const
+{
+    log() << L"Configuration:\n";
+    log() << L"\tthreshold: " << _threshold << "\n";
+    log() << L"\tincreaseWeightAmount: " << _increaseWeightAmount << "\n";
+    log() << L"\tdecreaseWeightAmount: " << _decreaseWeightAmount << "\n";
+    log() << L"\tmiddleSynapseCount: " << _middleSynapseCount << "\n";
+    log() << L"\toutSynapseCount: " << _outSynapseCount << "\n";
+    log() << L"\tmiddleNeuronCount: " << _middleNeuronCount << "\n";
+    log() << L"\tsensorNeuronCount: " << _sensorNeuronCount << "\n";
+    log() << L"\toutNeuronCount: " << _outNeuronCount << "\n";
 }
 
 const Logger& Config::log() const
