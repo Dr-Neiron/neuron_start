@@ -25,7 +25,7 @@ NeuronPool::~NeuronPool()
 
 void NeuronPool::construct()
 {
-    _config.log() << L"";
+    _config.log() << __FUNCTION__ << L": Constructing neuron pool.\n";
 
     // create sensor neurons
     _sensorNeurons.reserve(_config.getSensorNeuronCount());
@@ -92,5 +92,11 @@ void NeuronPool::process()
         _neurons[i]->process();
     for (size_t i = 0; i < _outNeurons.size(); ++i)
         _outNeurons[i]->process();
+}
+
+void NeuronPool::lockSynapseWeights(bool isLocked)
+{
+    for (auto neuron : _neurons)
+        neuron->lockSynapseWeights(isLocked);
 }
 

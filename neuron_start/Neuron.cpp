@@ -3,7 +3,8 @@
 Neuron::Neuron(const Config &configurator):
 INeuron(configurator),
 _currentEnergy(0),
-_weightSum(0)
+_weightSum(0),
+_isLearning(true)
 {
 }
 
@@ -24,6 +25,9 @@ void Neuron::process()
     {
         bool needIncreaseWeight = synapse->neuron->isActive();
         synapse->neuron->addEnergy(synapse->weight / _weightSum * _currentEnergy);
+
+        if (!_isLearning) break;
+
         if (needIncreaseWeight)
             synapse->weight += synapse->weight * _config.getIncreaseWeightAmount();
         else
@@ -43,5 +47,12 @@ void Neuron::setNewSynapse(const Synapse& newSynapse)
     _synapses.push_back(newSynapse);
     _weightSum += newSynapse.weight;
 }
+
+void Neuron::lockSynapseWeights(bool isLocked)
+{
+    _isLearning = isLocked;
+}
+
+
 
 

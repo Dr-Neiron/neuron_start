@@ -28,6 +28,7 @@ public:
     virtual void addEnergy(double addition) = 0;
     virtual bool isActive() const = 0;
     virtual void setNewSynapse(const Synapse& newSynapse) = 0;
+    virtual void lockSynapseWeights(bool isLocked) = 0;
 
     virtual ~INeuron()
     {

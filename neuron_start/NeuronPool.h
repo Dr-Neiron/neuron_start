@@ -10,6 +10,7 @@ public:
     ~NeuronPool();
     void construct();
     void process();
+    void lockSynapseWeights(bool isLocked);
 
 private:
     size_t _size;
