@@ -11,6 +11,8 @@ public:
     void construct();
     void process();
     void lockSynapseWeights(bool isLocked);
+    std::vector<INeuron*> getSensorNeurons() const;
+    std::vector<INeuron*> getOutNeurons() const;
 
 private:
     size_t _size;

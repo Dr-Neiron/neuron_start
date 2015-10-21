@@ -100,3 +100,13 @@ void NeuronPool::lockSynapseWeights(bool isLocked)
         neuron->lockSynapseWeights(isLocked);
 }
 
+std::vector<INeuron*> NeuronPool::getSensorNeurons() const
+{
+    return _sensorNeurons;
+}
+
+std::vector<INeuron*> NeuronPool::getOutNeurons() const
+{
+    return _outNeurons;
+}
+

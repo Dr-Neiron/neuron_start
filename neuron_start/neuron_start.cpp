@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
     auto neuronPool = std::make_shared<NeuronPool>(config);
     neuronPool->construct();
 
-    Environment env;
+    Environment env(config);
     env.setPool(neuronPool);
 
     env.start();
