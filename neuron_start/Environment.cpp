@@ -11,34 +11,43 @@ void Environment::setPool(std::shared_ptr<NeuronPool> neuronPool)
     _neuronPool = neuronPool;
 }
 
-void Environment::start()
+void Environment::startLearning()
 {
     std::vector<INeuron*> sensors = _neuronPool->getSensorNeurons();
-    std::vector<INeuron*> out = _neuronPool->getOutNeurons();
-
+    size_t counter = 0;
+    _config.log() << __FUNCTIONW__ << L": starting learning...\n";
     do
     {
         sensors[0]->addEnergy(_config.getThreshold());
-    } while (true);
+        _neuronPool->process();
+        counter++;
+    } while (_isResultCorrect());
+    _config.log() << __FUNCTIONW__ << L": learning finished. counter=" << counter << "\n";
 }
 
+void Environment::test()
+{
+    std::vector<INeuron*> sensors = _neuronPool->getSensorNeurons();
+    _config.log() << __FUNCTIONW__ << L": starting testing...\n";
+}
 
 Environment::~Environment()
 {
 }
 
-bool Environment::_isResultCorrect(std::vector<INeuron*> outNeurons)
+bool Environment::_isResultCorrect() const
 {
-    bool result = true;
+    std::vector<INeuron*> outNeurons = _neuronPool->getOutNeurons();
 
-    if (dynamic_cast<OutNeuron*>(outNeurons[0])->wasActivated)
-        result = true;
+    // for now fisrt checked for 1, other for 0
+    if (!dynamic_cast<OutNeuron*>(outNeurons[0])->wasActivated())
+        return false;
 
-    for (auto neuron = outNeurons.begin() + 1; neuron != outNeurons.end(); ++neuron)
+    for (size_t i = 1; i < outNeurons.size(); ++i)
     {
-        if (dynamic_cast<OutNeuron*>(neuron)->wasActivated)
-            result = true;
+        if (dynamic_cast<OutNeuron*>(outNeurons[i])->wasActivated())
+            return false;
     }
 
-    return result;
+    return true;
 }

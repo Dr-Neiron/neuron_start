@@ -17,6 +17,7 @@ int main(int argc, char* argv[])
     Environment env(config);
     env.setPool(neuronPool);
 
-    env.start();
+    env.startLearning();
+    env.test();
 }
 

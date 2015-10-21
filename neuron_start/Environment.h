@@ -8,11 +8,12 @@ class Environment
 public:
     Environment(const Config& config);
     void setPool(std::shared_ptr<NeuronPool> neuronPool);
-    void start();
+    void startLearning();
+    void test();
     virtual ~Environment();
 
 private:
-    bool _isResultCorrect(std::vector<INeuron*> outNeurons);
+    bool _isResultCorrect() const;
 
     std::shared_ptr<NeuronPool> _neuronPool;
     const Config& _config;

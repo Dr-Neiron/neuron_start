@@ -25,7 +25,7 @@ NeuronPool::~NeuronPool()
 
 void NeuronPool::construct()
 {
-    _config.log() << __FUNCTION__ << L": Constructing neuron pool.\n";
+    _config.log() << __FUNCTIONW__ << L": Constructing neuron pool.\n";
 
     // create sensor neurons
     _sensorNeurons.reserve(_config.getSensorNeuronCount());
