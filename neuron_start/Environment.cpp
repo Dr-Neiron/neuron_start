@@ -15,7 +15,7 @@ bool Environment::learn()
 {
     std::vector<INeuron*> sensors = _neuronPool->getSensorNeurons();
     size_t counter = 0;
-    _config.log() << __FUNCTIONW__ << L": starting learning...\n";
+    _config.log() << __FUNCTION__ << ": starting learning...\n";
     do
     {
         sensors[0]->addEnergy(_config.getThreshold());
@@ -23,18 +23,18 @@ bool Environment::learn()
         counter++;
         if (counter >= _config.getLearnLimit())
         {
-            _config.log() << __FUNCTIONW__ << L": learning stopped by counter limit. counter=" << counter << "\n";
+            _config.log() << __FUNCTION__ << L": learning stopped by counter limit. counter=" << counter << "\n";
             return false;
         }
     } while (!_isResultCorrect());
-    _config.log() << __FUNCTIONW__ << L": learning finished. counter=" << counter << "\n";
+    _config.log() << __FUNCTION__ << ": learning finished. counter=" << counter << "\n";
     return true;
 }
 
 void Environment::test()
 {
     //std::vector<INeuron*> sensors = _neuronPool->getSensorNeurons();
-    _config.log() << __FUNCTIONW__ << L": starting testing...\n";
+    _config.log() << __FUNCTION__ << ": starting testing...\n";
 }
 
 Environment::~Environment()

@@ -1,8 +1,9 @@
 #include "Logger.h"
+#include <iostream>
 
 
 Logger::Logger():
-    _outStream(&std::wcout),
+    _outStream(&std::cout),
     _isOwner(false)
 {
 }
@@ -12,7 +13,7 @@ Logger::~Logger()
     setStream(nullptr, false);
 }
 
-void Logger::setStream(std::wostream* stream, bool isOwner)
+void Logger::setStream(std::ostream *stream, bool isOwner)
 {
     if (_isOwner)
         delete _outStream;

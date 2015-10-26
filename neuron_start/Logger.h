@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <stdexcept>
 
 class Logger
 {
@@ -7,13 +8,13 @@ public:
     Logger();
     virtual ~Logger();
 
-    void setStream(std::wostream* stream, bool isOwner);
+    void setStream(std::ostream* stream, bool isOwner);
 
     template<typename T>
     const Logger& operator << (const T& object) const;
 
 private:
-    std::wostream* _outStream;
+    std::ostream* _outStream;
     bool           _isOwner;
 };
 
