@@ -37,3 +37,8 @@ void MainWindow::on_run_pushButton_clicked()
         }
 
 }
+
+void MainWindow::on_networkConfig_pushButton_clicked()
+{
+
+}

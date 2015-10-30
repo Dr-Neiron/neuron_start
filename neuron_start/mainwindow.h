@@ -18,6 +18,8 @@ public:
 private slots:
     void on_run_pushButton_clicked();
 
+    void on_networkConfig_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

@@ -33,4 +33,5 @@ HEADERS  += mainwindow.h \
     OutNeuron.h \
     SensorNeuron.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    network_settings.ui
