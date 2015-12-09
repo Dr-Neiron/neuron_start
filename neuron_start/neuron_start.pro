@@ -21,7 +21,9 @@ SOURCES += main.cpp\
     Neuron.cpp \
     NeuronPool.cpp \
     OutNeuron.cpp \
-    SensorNeuron.cpp
+    SensorNeuron.cpp \
+    exception.cpp \
+    networksettings.cpp
 
 HEADERS  += mainwindow.h \
     Config.h \
@@ -31,7 +33,9 @@ HEADERS  += mainwindow.h \
     Neuron.h \
     NeuronPool.h \
     OutNeuron.h \
-    SensorNeuron.h
+    SensorNeuron.h \
+    exception.h \
+    networksettings.h
 
 FORMS    += mainwindow.ui \
-    network_settings.ui
+    networksettings.ui

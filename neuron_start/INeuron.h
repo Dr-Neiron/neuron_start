@@ -22,7 +22,7 @@ public:
     explicit INeuron(const Config& config):
         _config(config)
     {
-    };
+    }
 
     virtual void process() = 0;
     virtual void addEnergy(double addition) = 0;
@@ -32,7 +32,7 @@ public:
 
     virtual ~INeuron()
     {
-    };
+    }
 
 
     INeuron() = delete;

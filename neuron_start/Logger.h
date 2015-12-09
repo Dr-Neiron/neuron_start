@@ -14,7 +14,7 @@ public:
     const Logger& operator << (const T& object) const;
 
 private:
-    std::ostream* _outStream;
+    std::ostream*  _outStream;
     bool           _isOwner;
 };
 

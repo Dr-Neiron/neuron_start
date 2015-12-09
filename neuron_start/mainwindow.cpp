@@ -3,6 +3,7 @@
 #include "Config.h"
 #include "NeuronPool.h"
 #include "Environment.h"
+#include "networksettings.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -40,5 +41,6 @@ void MainWindow::on_run_pushButton_clicked()
 
 void MainWindow::on_networkConfig_pushButton_clicked()
 {
-
+    NetworkSettings settings;
+    settings.exec();
 }

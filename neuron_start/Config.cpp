@@ -14,6 +14,7 @@ Config::Config():
 {
 }
 
+// getters
 double Config::getThreshold() const
 {
     return _threshold;
@@ -59,6 +60,63 @@ size_t Config::getLearnLimit() const
     return _learnLimit;
 }
 
+// setters
+void Config::setThreshold(double threshold)
+{
+    _threshold = threshold;
+}
+
+
+void Config::setIncreaseWeightAmount(double increaseWeightAmount)
+{
+    _increaseWeightAmount = increaseWeightAmount;
+}
+
+
+void Config::setDecreaseWeightAmount(double decreaseWeightAmount)
+{
+    _decreaseWeightAmount = decreaseWeightAmount;
+}
+
+
+void Config::setMiddleSynapseCount(size_t middleSynapseCount)
+{
+    _middleSynapseCount = middleSynapseCount;
+}
+
+
+void Config::setOutSynapseCount(size_t outSynapseCount)
+{
+    _outSynapseCount = outSynapseCount;
+}
+
+
+void Config::setMiddleNeuronCount(size_t middleNeuronCount)
+{
+    _middleNeuronCount = middleNeuronCount;
+}
+
+
+void Config::setSensorNeuronCount(size_t sensorNeuronCount)
+{
+    _sensorNeuronCount = sensorNeuronCount;
+}
+
+
+void Config::setOutNeuronCount(size_t outNeuronCount)
+{
+    _outNeuronCount = outNeuronCount;
+}
+
+
+void Config::setLearnLimit(size_t learnLimit)
+{
+    _learnLimit = learnLimit;
+}
+
+
+
+// etc.
 void Config::printConfig() const
 {
     log() << "Configuration:\n";
