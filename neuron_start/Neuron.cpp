@@ -21,17 +21,17 @@ void Neuron::process()
 {
     if (!isActive()) return;
 
-    for (auto synapse = _synapses.begin(); synapse != _synapses.end(); ++synapse)
+    for (auto&& synapse : _synapses)
     {
-        bool needIncreaseWeight = synapse->neuron->isActive();
-        synapse->neuron->addEnergy(synapse->weight / _weightSum * _currentEnergy);
+        bool needIncreaseWeight = synapse.neuron->isActive();
+        synapse.neuron->addEnergy(synapse.weight / _weightSum * _currentEnergy);
 
         if (!_isLearning) break;
 
         if (needIncreaseWeight)
-            synapse->weight += synapse->weight * _config.getIncreaseWeightAmount();
+            synapse.weight += synapse.weight * _config.getIncreaseWeightAmount();
         else
-            synapse->weight -= synapse->weight * _config.getDecreaseWeightAmount();
+            synapse.weight -= synapse.weight * _config.getDecreaseWeightAmount();
     }
 
     _currentEnergy = 0;

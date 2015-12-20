@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <memory>
 #include "Config.h"
 #include "INeuron.h"
 
@@ -11,14 +12,21 @@ public:
     void construct();
     void process();
     void lockSynapseWeights(bool isLocked);
-    std::vector<INeuron*> getSensorNeurons() const;
-    std::vector<INeuron*> getOutNeurons() const;
+    const std::vector<std::unique_ptr<INeuron>>& getSensorNeurons() const;
+    const std::vector<std::unique_ptr<INeuron>>& getOutNeurons() const;
     void dumpNetwork(std::wstring fileName) const;
+
+
+    NeuronPool() = delete;
+    NeuronPool(const NeuronPool& other) = delete;
+    NeuronPool(NeuronPool&& other) = delete;
+    NeuronPool& operator=(const NeuronPool& other) = delete;
+    NeuronPool& operator=(NeuronPool&& other) = delete;
 
 private:
     size_t _size;
-    std::vector<INeuron*> _neurons;
-    std::vector<INeuron*> _sensorNeurons;
-    std::vector<INeuron*> _outNeurons;
+    std::vector<std::unique_ptr<INeuron>> _neurons;
+    std::vector<std::unique_ptr<INeuron>> _sensorNeurons;
+    std::vector<std::unique_ptr<INeuron>> _outNeurons;
     const Config& _config;
 };

@@ -13,7 +13,7 @@ void Environment::setPool(std::shared_ptr<NeuronPool> neuronPool)
 
 bool Environment::learn()
 {
-    std::vector<INeuron*> sensors = _neuronPool->getSensorNeurons();
+    const std::vector<std::unique_ptr<INeuron>>& sensors = _neuronPool->getSensorNeurons();
     size_t counter = 0;
     _config.log() << __FUNCTION__ << ": starting learning...\n";
     do
@@ -43,15 +43,15 @@ Environment::~Environment()
 
 bool Environment::_isResultCorrect() const
 {
-    std::vector<INeuron*> outNeurons = _neuronPool->getOutNeurons();
+    const std::vector<std::unique_ptr<INeuron>>& outNeurons = _neuronPool->getOutNeurons();
 
     // for now fisrt checked for 1, other for 0
-    if (!dynamic_cast<OutNeuron*>(outNeurons[0])->wasActivated())
+    if (!dynamic_cast<OutNeuron*>(outNeurons[0].get())->wasActivated())
         return false;
 
     for (size_t i = 1; i < outNeurons.size(); ++i)
     {
-        if (dynamic_cast<OutNeuron*>(outNeurons[i])->wasActivated())
+        if (dynamic_cast<OutNeuron*>(outNeurons[i].get())->wasActivated())
             return false;
     }
 

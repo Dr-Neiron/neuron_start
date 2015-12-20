@@ -12,6 +12,13 @@ public:
     void test();
     virtual ~Environment();
 
+
+    Environment() = delete;
+    Environment(const Environment& other) = delete;
+    Environment(Environment&& other) = delete;
+    Environment& operator=(const Environment& other) = delete;
+    Environment& operator=(Environment&& other) = delete;
+
 private:
     bool _isResultCorrect() const;
 
