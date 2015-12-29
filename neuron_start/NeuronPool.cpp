@@ -5,9 +5,9 @@
 #include <random>
 #include <stdexcept>
 
-NeuronPool::NeuronPool(const Config& configurator) :
+NeuronPool::NeuronPool(std::shared_ptr<const Config> config) :
     _size(0),
-    _config(configurator)
+    _config(config)
 {
 }
 
@@ -17,35 +17,35 @@ NeuronPool::~NeuronPool()
 
 void NeuronPool::construct()
 {
-    _config.log() << __FUNCTION__ << ": Constructing neuron pool.\n";
+    _config->log() << __FUNCTION__ << ": Constructing neuron pool.\n";
 
     // create sensor neurons
-    _sensorNeurons.reserve(_config.getSensorNeuronCount());
-    for (size_t i = 0; i < _config.getSensorNeuronCount(); ++i)
+    _sensorNeurons.reserve(_config->getSensorNeuronCount());
+    for (size_t i = 0; i < _config->getSensorNeuronCount(); ++i)
     {
         _sensorNeurons.push_back(std::unique_ptr<INeuron>(new SensorNeuron(_config)));
     }
 
     // create middle neurons
-    _neurons.reserve(_config.getMiddleNeuronCount());
-    for (size_t i = 0; i < _config.getMiddleNeuronCount(); ++i)
+    _neurons.reserve(_config->getMiddleNeuronCount());
+    for (size_t i = 0; i < _config->getMiddleNeuronCount(); ++i)
     {
         _neurons.push_back(std::unique_ptr<INeuron>(new Neuron(_config)));
     }
 
     // create out neurons
-    _outNeurons.reserve(_config.getOutNeuronCount());
-    for (size_t i = 0; i < _config.getOutNeuronCount(); ++i)
+    _outNeurons.reserve(_config->getOutNeuronCount());
+    for (size_t i = 0; i < _config->getOutNeuronCount(); ++i)
     {
         _outNeurons.push_back(std::unique_ptr<INeuron>(new OutNeuron(_config)));
     }
 
     static std::default_random_engine randomGenerator;
     static std::uniform_real_distribution<double> weightDistribution(0.0, 1.0);
-    static std::uniform_int_distribution<size_t> middleNeuronsDistribution(0, _config.getMiddleNeuronCount() - 1);
+    static std::uniform_int_distribution<size_t> middleNeuronsDistribution(0, _config->getMiddleNeuronCount() - 1);
 
     // create sensor synapses
-    for (size_t i = 0; i < _config.getSensorNeuronCount(); ++i)
+    for (size_t i = 0; i < _config->getSensorNeuronCount(); ++i)
     {
         size_t to = middleNeuronsDistribution(randomGenerator);
         double weight = 1.0;
@@ -53,7 +53,7 @@ void NeuronPool::construct()
     }
 
     // create middle synapses
-    for (size_t i = 0; i < _config.getMiddleSynapseCount(); ++i)
+    for (size_t i = 0; i < _config->getMiddleSynapseCount(); ++i)
     {
         size_t from = middleNeuronsDistribution(randomGenerator);
         size_t to = middleNeuronsDistribution(randomGenerator);
@@ -62,9 +62,9 @@ void NeuronPool::construct()
     }
 
     // create out synapses
-    for (size_t outNeuronIndex = 0; outNeuronIndex < _config.getOutNeuronCount(); ++outNeuronIndex)
+    for (size_t outNeuronIndex = 0; outNeuronIndex < _config->getOutNeuronCount(); ++outNeuronIndex)
     {
-        for (size_t synapseIndex = 0; synapseIndex < _config.getOutSynapseCount(); ++synapseIndex)
+        for (size_t synapseIndex = 0; synapseIndex < _config->getOutSynapseCount(); ++synapseIndex)
         {
             size_t from = middleNeuronsDistribution(randomGenerator);
             double weight = weightDistribution(randomGenerator);

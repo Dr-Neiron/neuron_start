@@ -1,7 +1,7 @@
 #include "Environment.h"
 
 
-Environment::Environment(const Config& config):
+Environment::Environment(std::shared_ptr<const Config> config):
     _config(config)
 {
 }
@@ -15,26 +15,26 @@ bool Environment::learn()
 {
     const std::vector<std::unique_ptr<INeuron>>& sensors = _neuronPool->getSensorNeurons();
     size_t counter = 0;
-    _config.log() << __FUNCTION__ << ": starting learning...\n";
+    _config->log() << __FUNCTION__ << ": starting learning...\n";
     do
     {
-        sensors[0]->addEnergy(_config.getThreshold());
+        sensors[0]->addEnergy(_config->getThreshold());
         _neuronPool->process();
         counter++;
-        if (counter >= _config.getLearnLimit())
+        if (counter >= _config->getLearnLimit())
         {
-            _config.log() << __FUNCTION__ << L": learning stopped by counter limit. counter=" << counter << "\n";
+            _config->log() << __FUNCTION__ << L": learning stopped by counter limit. counter=" << counter << "\n";
             return false;
         }
     } while (!_isResultCorrect());
-    _config.log() << __FUNCTION__ << ": learning finished. counter=" << counter << "\n";
+    _config->log() << __FUNCTION__ << ": learning finished. counter=" << counter << "\n";
     return true;
 }
 
 void Environment::test()
 {
     //std::vector<INeuron*> sensors = _neuronPool->getSensorNeurons();
-    _config.log() << __FUNCTION__ << ": starting testing...\n";
+    _config->log() << __FUNCTION__ << ": starting testing...\n";
 }
 
 Environment::~Environment()

@@ -7,7 +7,7 @@
 class NeuronPool
 {
 public:
-    NeuronPool(const Config& configurator);
+    NeuronPool(std::shared_ptr<const Config> config);
     ~NeuronPool();
     void construct();
     void process();
@@ -28,5 +28,5 @@ private:
     std::vector<std::unique_ptr<INeuron>> _neurons;
     std::vector<std::unique_ptr<INeuron>> _sensorNeurons;
     std::vector<std::unique_ptr<INeuron>> _outNeurons;
-    const Config& _config;
+    std::shared_ptr<const Config> _config;
 };

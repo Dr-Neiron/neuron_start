@@ -6,7 +6,7 @@
 class Environment
 {
 public:
-    Environment(const Config& config);
+    explicit Environment(std::shared_ptr<const Config> config);
     void setPool(std::shared_ptr<NeuronPool> neuronPool);
     bool learn();
     void test();
@@ -23,6 +23,6 @@ private:
     bool _isResultCorrect() const;
 
     std::shared_ptr<NeuronPool> _neuronPool;
-    const Config& _config;
+    std::shared_ptr<const Config> _config;
 };
 

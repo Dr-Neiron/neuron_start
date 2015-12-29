@@ -7,7 +7,7 @@ class Neuron :
     public INeuron
 {
 public:
-    explicit Neuron(const Config& config);
+    explicit Neuron(std::shared_ptr<const Config> config);
     virtual ~Neuron();
 
     virtual void process() override;

@@ -25,7 +25,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    std::unique_ptr<Config> _config;
+    std::shared_ptr<Config> _config;
 };
 
 #endif // MAINWINDOW_H

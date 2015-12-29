@@ -7,7 +7,8 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    _config(std::make_shared<Config>())
 {
     ui->setupUi(this);
 }
@@ -19,13 +20,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_run_pushButton_clicked()
 {
-    Config config;
-    config.printConfig();
+    _config->printConfig();
 
-        auto neuronPool = std::make_shared<NeuronPool>(config);
+        auto neuronPool = std::make_shared<NeuronPool>(_config);
         neuronPool->construct();
 
-        Environment env(config);
+        Environment env(_config);
         env.setPool(neuronPool);
 
         if (env.learn())
@@ -34,7 +34,7 @@ void MainWindow::on_run_pushButton_clicked()
         }
         else
         {
-            config.log() << __FUNCTION__ << ": learning failed. \n";
+            _config->log() << __FUNCTION__ << ": learning failed. \n";
         }
 
 }

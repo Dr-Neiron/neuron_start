@@ -1,5 +1,6 @@
 #pragma once
 #include "Config.h"
+#include <memory>
 
 class INeuron;
 
@@ -19,7 +20,7 @@ public:
 class INeuron
 {
 public:
-    explicit INeuron(const Config& config):
+    explicit INeuron(std::shared_ptr<const Config> config):
         _config(config)
     {
     }
@@ -42,5 +43,5 @@ public:
     INeuron& operator=(INeuron&& other) = delete;
 
 protected:
-    const Config& _config;
+    std::shared_ptr<const Config> _config;
 };

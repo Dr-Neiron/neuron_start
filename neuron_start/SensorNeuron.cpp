@@ -2,7 +2,7 @@
 #include <stdexcept>
 
 
-SensorNeuron::SensorNeuron(const Config& config):
+SensorNeuron::SensorNeuron(std::shared_ptr<const Config> config):
     Neuron(config)
 {
 }
