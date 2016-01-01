@@ -23,7 +23,7 @@ bool Environment::learn()
         counter++;
         if (counter >= _config->getLearnLimit())
         {
-            _config->log() << __FUNCTION__ << L": learning stopped by counter limit. counter=" << counter << "\n";
+            _config->log() << __FUNCTION__ << ": learning stopped by counter limit. counter=" << counter << "\n";
             return false;
         }
     } while (!_isResultCorrect());

@@ -10,8 +10,12 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = neuron_start
 TEMPLATE = app
-QMAKE_CXXFLAGS += -std=c++11
 
+win32 {
+    QMAKE_CXXFLAGS += /WX
+} else {
+    QMAKE_CXXFLAGS += -std=c++11
+}
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -23,7 +27,8 @@ SOURCES += main.cpp\
     OutNeuron.cpp \
     SensorNeuron.cpp \
     exception.cpp \
-    networksettings.cpp
+    networksettings.cpp \
+    NeuralNetwork.cpp
 
 HEADERS  += mainwindow.h \
     Config.h \
@@ -35,7 +40,8 @@ HEADERS  += mainwindow.h \
     OutNeuron.h \
     SensorNeuron.h \
     exception.h \
-    networksettings.h
+    networksettings.h \
+    NeuralNetwork.h
 
 FORMS    += mainwindow.ui \
     networksettings.ui
