@@ -8,6 +8,7 @@ namespace Ui {
 class MainWindow;
 }
 
+class NeuralNetwork;
 class Config;
 
 class MainWindow : public QMainWindow
@@ -23,9 +24,9 @@ private slots:
     void on_networkConfig_pushButton_clicked();
 
 private:
-    Ui::MainWindow *ui;
-
-    std::shared_ptr<Config> _config;
+    Ui::MainWindow                  *ui;
+    std::shared_ptr<Config>         _config;
+    std::unique_ptr<NeuralNetwork>  _network;
 };
 
 #endif // MAINWINDOW_H

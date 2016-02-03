@@ -4,13 +4,16 @@
 #include "NeuronPool.h"
 #include "Environment.h"
 #include "networksettings.h"
+#include "NeuralNetwork.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    _config(std::make_shared<Config>())
+    _config(std::make_shared<Config>()),
+    _network(nullptr)
 {
     ui->setupUi(this);
+    //_network.reset(new NeuralNetwork());
 }
 
 MainWindow::~MainWindow()

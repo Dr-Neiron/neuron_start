@@ -20,8 +20,9 @@ void OutNeuron::process()
         _wasActivated = false;
 }
 
-void OutNeuron::setNewSynapse(const Synapse& newSynapse)
+void OutNeuron::setNewSynapse(const Synapse&)
 {
+
     throw std::logic_error("Out neurons can not have synapses.");
 }
 

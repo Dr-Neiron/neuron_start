@@ -30,32 +30,32 @@ double Config::getDecreaseWeightAmount() const
     return _decreaseWeightAmount;
 }
 
-size_t Config::getMiddleSynapseCount() const
+int32_t Config::getMiddleSynapseCount() const
 {
     return _middleSynapseCount;
 }
 
-size_t Config::getOutSynapseCount() const
+int32_t Config::getOutSynapseCount() const
 {
     return _outSynapseCount;
 }
 
-size_t Config::getMiddleNeuronCount() const
+int32_t Config::getMiddleNeuronCount() const
 {
     return _middleNeuronCount;
 }
 
-size_t Config::getSensorNeuronCount() const
+int32_t Config::getSensorNeuronCount() const
 {
     return _sensorNeuronCount;
 }
 
-size_t Config::getOutNeuronCount() const
+int32_t Config::getOutNeuronCount() const
 {
     return _outNeuronCount;
 }
 
-size_t Config::getLearnLimit() const
+int32_t Config::getLearnLimit() const
 {
     return _learnLimit;
 }
@@ -79,37 +79,37 @@ void Config::setDecreaseWeightAmount(double decreaseWeightAmount)
 }
 
 
-void Config::setMiddleSynapseCount(size_t middleSynapseCount)
+void Config::setMiddleSynapseCount(int32_t middleSynapseCount)
 {
     _middleSynapseCount = middleSynapseCount;
 }
 
 
-void Config::setOutSynapseCount(size_t outSynapseCount)
+void Config::setOutSynapseCount(int32_t outSynapseCount)
 {
     _outSynapseCount = outSynapseCount;
 }
 
 
-void Config::setMiddleNeuronCount(size_t middleNeuronCount)
+void Config::setMiddleNeuronCount(int32_t middleNeuronCount)
 {
     _middleNeuronCount = middleNeuronCount;
 }
 
 
-void Config::setSensorNeuronCount(size_t sensorNeuronCount)
+void Config::setSensorNeuronCount(int32_t sensorNeuronCount)
 {
     _sensorNeuronCount = sensorNeuronCount;
 }
 
 
-void Config::setOutNeuronCount(size_t outNeuronCount)
+void Config::setOutNeuronCount(int32_t outNeuronCount)
 {
     _outNeuronCount = outNeuronCount;
 }
 
 
-void Config::setLearnLimit(size_t learnLimit)
+void Config::setLearnLimit(int32_t learnLimit)
 {
     _learnLimit = learnLimit;
 }
