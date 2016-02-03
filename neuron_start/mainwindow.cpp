@@ -22,20 +22,20 @@ void MainWindow::on_run_pushButton_clicked()
 {
     _config->printConfig();
 
-        auto neuronPool = std::make_shared<NeuronPool>(_config);
-        neuronPool->construct();
+    auto neuronPool = std::make_shared<NeuronPool>(_config);
+    neuronPool->construct();
 
-        Environment env(_config);
-        env.setPool(neuronPool);
+    Environment env(_config);
+    env.setPool(neuronPool);
 
-        if (env.learn())
-        {
-            env.test();
-        }
-        else
-        {
-            _config->log() << __FUNCTION__ << ": learning failed. \n";
-        }
+    if (env.learn())
+    {
+        env.test();
+    }
+    else
+    {
+        _config->log() << __FUNCTION__ << ": learning failed. \n";
+    }
 
 }
 
