@@ -14,7 +14,7 @@ void Environment::setPool(std::shared_ptr<NeuronPool> neuronPool)
 bool Environment::learn()
 {
     const std::vector<std::unique_ptr<INeuron>>& sensors = _neuronPool->getSensorNeurons();
-    size_t counter = 0;
+    int32_t counter = 0;
     _config->log() << __FUNCTION__ << ": starting learning...\n";
     do
     {

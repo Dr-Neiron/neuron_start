@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _network(nullptr)
 {
     ui->setupUi(this);
-    //_network.reset(new NeuralNetwork());
+    _network.reset(new NeuralNetwork());
 }
 
 MainWindow::~MainWindow()
@@ -23,27 +23,17 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_run_pushButton_clicked()
 {
-    _config->printConfig();
-
-    auto neuronPool = std::make_shared<NeuronPool>(_config);
-    neuronPool->construct();
-
-    Environment env(_config);
-    env.setPool(neuronPool);
-
-    if (env.learn())
-    {
-        env.test();
-    }
-    else
-    {
-        _config->log() << __FUNCTION__ << ": learning failed. \n";
-    }
-
+    _network->constructDefault(_config);
 }
 
 void MainWindow::on_networkConfig_pushButton_clicked()
 {
     NetworkSettings settings;
+    settings.setConfig(_config);
     settings.exec();
+}
+
+void MainWindow::on_dump_pushButton_clicked()
+{
+
 }

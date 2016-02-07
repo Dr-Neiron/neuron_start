@@ -13,8 +13,11 @@ class NeuralNetwork : public QObject
     Q_OBJECT
 public:
     explicit NeuralNetwork(QObject *parent = 0);
-    void constructDefault(std::shared_ptr<Config> config = nullptr);
     ~NeuralNetwork();
+
+    void constructDefault(std::shared_ptr<Config> config = nullptr);
+    bool learn();
+    void dump();
 
 signals:
 

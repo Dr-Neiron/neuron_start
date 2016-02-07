@@ -23,6 +23,8 @@ private slots:
     void on_run_pushButton_clicked();
     void on_networkConfig_pushButton_clicked();
 
+    void on_dump_pushButton_clicked();
+
 private:
     Ui::MainWindow                  *ui;
     std::shared_ptr<Config>         _config;

@@ -26,6 +26,16 @@ void NeuralNetwork::constructDefault(std::shared_ptr<Config> config)
     _env->setPool(_pool);
 }
 
+bool NeuralNetwork::learn()
+{
+    return _env->learn();
+}
+
+void NeuralNetwork::dump()
+{
+    _pool->dumpNetwork();
+}
+
 NeuralNetwork::~NeuralNetwork()
 {
 
