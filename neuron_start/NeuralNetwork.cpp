@@ -5,9 +5,9 @@
 
 NeuralNetwork::NeuralNetwork(QObject *parent) :
     QObject(parent),
-    _pool(nullptr),
+    _env(nullptr),
     _config(std::make_shared<Config>()),
-    _env(nullptr)
+    _pool(nullptr)
 {
 
 }

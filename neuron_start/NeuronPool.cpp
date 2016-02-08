@@ -101,8 +101,7 @@ const std::vector<std::unique_ptr<INeuron> > &NeuronPool::getOutNeurons() const
     return _outNeurons;
 }
 
-void NeuronPool::dumpNetwork(std::ofstream* out) const
+void NeuronPool::dumpNetwork() const
 {
-    fileName.clear();   // remove compiler warning
     throw std::runtime_error("Not implemented");
 }

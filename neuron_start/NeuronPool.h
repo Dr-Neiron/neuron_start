@@ -14,7 +14,7 @@ public:
     void lockSynapseWeights(bool isLocked);
     const std::vector<std::unique_ptr<INeuron>>& getSensorNeurons() const;
     const std::vector<std::unique_ptr<INeuron>>& getOutNeurons() const;
-    void dumpNetwork(std::ofstream *out) const;
+    void dumpNetwork() const;
 
 
     NeuronPool() = delete;

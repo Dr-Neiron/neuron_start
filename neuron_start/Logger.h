@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <stdexcept>
+#include <qdebug.h>
 
 class Logger
 {
@@ -24,5 +25,6 @@ const Logger& Logger::operator<<(const T& object) const
     if (!_outStream)
         throw std::runtime_error("No stream set for Logger class");
     (*_outStream) << object;
+    qDebug() << object;
     return *this;
 }

@@ -23,7 +23,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_run_pushButton_clicked()
 {
+    _config->printConfig();
     _network->constructDefault(_config);
+    _network->learn();
 }
 
 void MainWindow::on_networkConfig_pushButton_clicked()
